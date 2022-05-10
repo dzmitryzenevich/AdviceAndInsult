@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home"
+    >
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.dzenlab.adviceandinsult.presentation.fragment.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home"
+        >
+        <action
+            android:id="@+id/action_nav_home_to_nav_advice_list"
+            app:destination="@id/nav_advice_list" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_insult_list"
+            app:destination="@id/nav_insult_list" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_advice"
+            app:destination="@id/nav_advice" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_insult"
+            app:destination="@id/nav_insult" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_advice"
+        android:name="com.dzenlab.adviceandinsult.presentation.fragment.advice.AdviceFragment"
+        android:label="@string/menu_advice"
+        tools:layout="@layout/fragment_advice"
+        >
+        <action
+            android:id="@+id/action_nav_advice_to_nav_advice_list"
+            app:destination="@id/nav_advice_list" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_insult"
+        android:name="com.dzenlab.adviceandinsult.presentation.fragment.insult.InsultFragment"
+        android:label="@string/menu_insult"
+        tools:layout="@layout/fragment_insult"
+        >
+        <action
+            android:id="@+id/action_nav_insult_to_nav_insult_list"
+            app:destination="@id/nav_insult_list" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_advice_list"
+        android:name="com.dzenlab.adviceandinsult.presentation.fragment.adviceList.AdviceListFragment"
+        android:label="@string/menu_advice_list"
+        tools:layout="@layout/fragment_advice_list"
+        />
+
+    <fragment
+        android:id="@+id/nav_insult_list"
+        android:name="com.dzenlab.adviceandinsult.presentation.fragment.insultList.InsultListFragment"
+        android:label="@string/menu_insult_list"
+        tools:layout="@layout/fragment_insult_list"
+        />
+
+</navigation>

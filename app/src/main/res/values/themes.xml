@@ -1,0 +1,80 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.AdviceAndInsult" parent="Theme.Material3.DayNight">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.AdviceAndInsult.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.AdviceAndInsult.AppBarOverlay" parent="ThemeOverlay.Material3.Dark.ActionBar" />
+
+    <style name="Theme.AdviceAndInsult.PopupOverlay" parent="ThemeOverlay.Material3.Light" />
+
+    <style name="MaterialTextView" parent="Widget.Material3.AutoCompleteTextView.FilledBox">
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Material.Large</item>
+        <item name="android:background">@color/teal_200</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+
+    <style name="MaterialTextViewForCardView">
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Material.Large</item>
+    </style>
+
+    <style name="MaterialButton" parent="Widget.Material3.Button.ElevatedButton">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:paddingStart">32dp</item>
+        <item name="android:paddingEnd">32dp</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Material.Large</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:backgroundTint">@color/purple_500</item>
+        <item name="rippleColor">@color/purple_700</item>
+    </style>
+
+    <style name="CircularProgressIndicator" parent="Widget.Material3.CircularProgressIndicator">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:contentDescription">@string/fragment_progress_bar_text</item>
+        <!-- <item name="android:indeterminate">true</item> -->
+        <item name="android:elevation">6dp</item>
+        <item name="android:visibility">invisible</item>
+        <item name="showAnimationBehavior">none</item>
+        <item name="hideAnimationBehavior">none</item>
+        <item name="indicatorColor">@color/purple_500</item>
+        <!-- <item name="trackColor">@color/purple_500</item> -->
+        <item name="indicatorDirectionCircular">clockwise</item>
+        <item name="showDelay">100</item>
+        <item name="indicatorSize">40dp</item>
+        <item name="indicatorInset">4dp</item>
+        <item name="trackThickness">24dp</item>
+    </style>
+
+</resources>

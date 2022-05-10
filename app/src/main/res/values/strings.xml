@@ -1,0 +1,57 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Advice Insult</string>
+
+    <string name="action_advice">Advice</string>
+    <string name="action_insult">Insult</string>
+    <string name="action_delete">Delete</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_advice">Advice</string>
+    <string name="menu_advice_list">List of advice</string>
+    <string name="menu_insult">Insult</string>
+    <string name="menu_insult_list">List of insult</string>
+
+    <string name="dialog_update_ok">ИЗМЕНИТЬ</string>
+    <string name="dialog_cancel">ОТМЕНА</string>
+
+    <string name="fragment_button_list_text">LIST</string>
+    <string name="fragment_button_save_text">SAVE</string>
+    <string name="fragment_button_get_text">GET</string>
+    <string name="fragment_button_cancel_text" tools:ignore="ButtonCase">CANCEL</string>
+    <string name="fragment_progress_bar_text">download</string>
+
+    <string name="fragment_main_text">This application allows you to get advice or insult</string>
+    <string name="fragment_main_get_count_advice_ok">count advice</string>
+    <string name="fragment_main_get_count_advice_exception">get count advice exception</string>
+    <string name="fragment_main_get_count_advice_error">get count advice error</string>
+    <string name="fragment_main_get_count_insult_ok">count insult</string>
+    <string name="fragment_main_get_count_insult_exception">get count insult exception</string>
+    <string name="fragment_main_get_count_insult_error">get count insult error</string>
+
+    <string name="fragment_advice_get_advice_exception">Get advice exception</string>
+    <string name="fragment_advice_get_advice_error">Get advice error</string>
+    <string name="fragment_advice_save_in_database_ok">Advice insert OK ID</string>
+    <string name="fragment_advice_save_in_database_exception">Save advice exception</string>
+    <string name="fragment_advice_save_in_database_error">Save advice error</string>
+    <string name="fragment_advice_save_in_database_error_new_advice">No advice</string>
+    <string name="fragment_advice_save_in_database_error_advice_is_exist">Advice is exist</string>
+
+    <string name="fragment_advice_list_get_advice_exception">Get advice list exception</string>
+    <string name="fragment_advice_list_is_empty">Advice list is empty</string>
+    <string name="fragment_advice_list_delete_exception">Delete advice exception</string>
+
+    <string name="fragment_insult_get_insult_exception">Get insult exception</string>
+    <string name="fragment_insult_get_insult_error">Get insult error</string>
+    <string name="fragment_insult_save_in_database_ok">Insult insert OK ID</string>
+    <string name="fragment_insult_save_in_database_exception">Save insult exception</string>
+    <string name="fragment_insult_save_in_database_error">Save insult error</string>
+    <string name="fragment_insult_save_in_database_error_new_advice">No insult</string>
+    <string name="fragment_insult_save_in_database_error_advice_is_exist">Insult is exist</string>
+
+    <string name="fragment_insult_list_get_advice_exception">Get insult list exception</string>
+    <string name="fragment_insult_list_is_empty">Insult list is empty</string>
+    <string name="fragment_insult_list_delete_exception">Delete insult exception</string>
+
+    <string name="dialog_update_title">ENTER TEXT</string>
+
+</resources>
