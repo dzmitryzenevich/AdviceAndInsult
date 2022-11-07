@@ -7,26 +7,28 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    namespace "com.dzenlab.data"
+    compileSdk 33
 
     defaultConfig {
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+        multiDexEnabled true
     }
 
     signingConfigs {
 
         release {
-            storeFile file("/sign/release.jks")
+            storeFile file('D:\\Dev\\AndroidProject\\AdviceAndInsult\\data\\sign\\release.jks')
             storePassword "15658365079927385602"
             keyAlias "releaseversionadviceandinsult"
             keyPassword "15658365079927385602"
         }
 
         debug {
-            storeFile file("/sign/debug.jks")
+            storeFile file('D:\\Dev\\AndroidProject\\AdviceAndInsult\\data\\sign\\debug.jks')
             storePassword "59678847658245462295"
             keyAlias "debugversionadviceandinsult"
             keyPassword "59678847658245462295"
@@ -56,15 +58,16 @@ android {
 
 dependencies {
     implementation project(path : ':domain')
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1-native-mt'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.google.dagger:hilt-android:2.41'
-    kapt 'com.google.dagger:hilt-compiler:2.41'
-    implementation("androidx.room:room-runtime:2.4.2")
-    annotationProcessor("androidx.room:room-compiler:2.4.2")
-    kapt("androidx.room:room-compiler:2.4.2")
-    implementation("androidx.room:room-ktx:2.4.2")
+    implementation 'com.google.dagger:hilt-android:2.44'
+    kapt 'com.google.dagger:hilt-compiler:2.44'
+    implementation("androidx.room:room-runtime:2.4.3")
+    annotationProcessor("androidx.room:room-compiler:2.4.3")
+    kapt("androidx.room:room-compiler:2.4.3")
+    implementation("androidx.room:room-ktx:2.4.3")
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

@@ -8,7 +8,7 @@ import com.dzenlab.adviceandinsult.data.sharepref.models.AdviceSharePref
 
 class AdviceSharePrefStorage(private val sharedPreferences: SharedPreferences) {
 
-    internal suspend fun getAdvice(): AdviceSharePref {
+    internal fun getAdvice(): AdviceSharePref {
 
         val number = sharedPreferences.getInt(SHARE_PREF_ADVICE_NUMBER, 0)
 
@@ -18,7 +18,7 @@ class AdviceSharePrefStorage(private val sharedPreferences: SharedPreferences) {
         return AdviceSharePref(number = number, advice = advice)
     }
 
-    internal suspend fun saveAdvice(adviceSharePref: AdviceSharePref) {
+    internal fun saveAdvice(adviceSharePref: AdviceSharePref) {
 
         sharedPreferences.edit().putInt(SHARE_PREF_ADVICE_NUMBER, adviceSharePref.number).apply()
 

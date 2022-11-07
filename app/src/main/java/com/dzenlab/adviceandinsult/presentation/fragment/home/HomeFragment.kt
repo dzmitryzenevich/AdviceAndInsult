@@ -2,8 +2,11 @@ package com.dzenlab.adviceandinsult.presentation.fragment.home
 
 import android.os.Bundle
 import android.view.*
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.findNavController
 import com.dzenlab.adviceandinsult.R
 import com.dzenlab.adviceandinsult.databinding.FragmentHomeBinding
@@ -14,6 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
+
+    private lateinit var menuHost: MenuHost
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -28,6 +33,10 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         val root: View = binding.root
+
+        (requireActivity() as MenuHost).also { menuHost = it }
+
+        menuHost.addMenuProvider(menuProvider, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         val textView: MaterialTextView = binding.textHome
 
@@ -127,8 +136,6 @@ class HomeFragment : Fragment() {
             it.findNavController().navigate(R.id.action_nav_home_to_nav_insult_list)
         }
 
-        setHasOptionsMenu(true)
-
         return root
     }
 
@@ -136,34 +143,37 @@ class HomeFragment : Fragment() {
 
         super.onDestroyView()
 
-        setHasOptionsMenu(false)
+        menuHost.removeMenuProvider(menuProvider)
 
         _binding = null
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+    private val menuProvider: MenuProvider = object : MenuProvider {
 
-        inflater.inflate(R.menu.fragment_main, menu)
-    }
+        override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
-
-        R.id.action_advice -> {
-
-            binding.constraintLayout
-                .findNavController().navigate(R.id.action_nav_home_to_nav_advice)
-
-            true
+            menuInflater.inflate(R.menu.fragment_main, menu)
         }
 
-        R.id.action_insult -> {
+        override fun onMenuItemSelected(menuItem: MenuItem): Boolean  = when(menuItem.itemId) {
 
-            binding.constraintLayout
-                .findNavController().navigate(R.id.action_nav_home_to_nav_insult)
+            R.id.action_advice -> {
 
-            true
+                binding.constraintLayout
+                    .findNavController().navigate(R.id.action_nav_home_to_nav_advice)
+
+                true
+            }
+
+            R.id.action_insult -> {
+
+                binding.constraintLayout
+                    .findNavController().navigate(R.id.action_nav_home_to_nav_insult)
+
+                true
+            }
+
+            else -> false
         }
-
-        else -> super.onOptionsItemSelected(item)
     }
 }

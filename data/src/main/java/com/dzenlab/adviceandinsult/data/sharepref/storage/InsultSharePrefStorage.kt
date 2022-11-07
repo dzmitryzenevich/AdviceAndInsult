@@ -6,7 +6,7 @@ import com.dzenlab.adviceandinsult.data.sharepref.models.InsultSharePref
 
 class InsultSharePrefStorage(private val sharedPreferences: SharedPreferences) {
 
-    internal suspend fun getInsult(): InsultSharePref {
+    internal fun getInsult(): InsultSharePref {
 
         val number = sharedPreferences.getInt(SHARE_PREF_INSULT_NUMBER, 0)
 
@@ -19,7 +19,7 @@ class InsultSharePrefStorage(private val sharedPreferences: SharedPreferences) {
         return InsultSharePref(number = number, insult = insult, comment = comment)
     }
 
-    internal suspend fun saveInsult(insultSharePref: InsultSharePref) {
+    internal fun saveInsult(insultSharePref: InsultSharePref) {
 
         sharedPreferences.edit().putInt(SHARE_PREF_INSULT_NUMBER,
             insultSharePref.number).apply()

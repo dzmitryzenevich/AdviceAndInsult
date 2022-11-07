@@ -2,8 +2,11 @@ package com.dzenlab.adviceandinsult.presentation.fragment.adviceList
 
 import android.os.Bundle
 import android.view.*
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +22,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class AdviceListFragment : Fragment() {
 
+    private lateinit var menuHost: MenuHost
+
     private var _binding: FragmentAdviceListBinding? = null
 
     private val binding get() = _binding!!
@@ -26,6 +31,8 @@ class AdviceListFragment : Fragment() {
     private val viewModel: AdviceListViewModel by viewModels()
 
     private var snackBar: Snackbar? = null
+
+    private var isShowMenu = false
 
 
     override fun onCreateView(inflater: LayoutInflater,
@@ -35,6 +42,8 @@ class AdviceListFragment : Fragment() {
         _binding = FragmentAdviceListBinding.inflate(inflater, container, false)
 
         val root: View = binding.root
+
+        (requireActivity() as MenuHost).also { menuHost = it }
 
         val recyclerView: RecyclerView = binding.adviceRecyclerView
 
@@ -152,7 +161,25 @@ class AdviceListFragment : Fragment() {
 
         viewModel.deleteList.observe(viewLifecycleOwner) { list ->
 
-            setHasOptionsMenu(list.isNotEmpty())
+            if(list.isNotEmpty()) {
+
+                if(!isShowMenu) {
+
+                    isShowMenu = true
+
+                    menuHost.addMenuProvider(menuProvider, viewLifecycleOwner,
+                        Lifecycle.State.RESUMED)
+                }
+
+            } else {
+
+                if(isShowMenu) {
+
+                    isShowMenu = false
+
+                    menuHost.removeMenuProvider(menuProvider)
+                }
+            }
         }
 
         viewModel.emptyList.observe(viewLifecycleOwner) {
@@ -178,6 +205,8 @@ class AdviceListFragment : Fragment() {
 
         super.onDestroyView()
 
+        menuHost.removeMenuProvider(menuProvider)
+
         snackBar?.let {
 
             if(it.isShown) {
@@ -191,20 +220,23 @@ class AdviceListFragment : Fragment() {
         _binding = null
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+    private val menuProvider: MenuProvider = object : MenuProvider {
 
-        inflater.inflate(R.menu.fragment_advice_list, menu)
-    }
+        override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
-
-        R.id.action_delete -> {
-
-            viewModel.deleteChecked()
-
-            true
+            menuInflater.inflate(R.menu.fragment_advice_list, menu)
         }
 
-        else -> super.onOptionsItemSelected(item)
+        override fun onMenuItemSelected(menuItem: MenuItem): Boolean  = when(menuItem.itemId) {
+
+            R.id.action_delete -> {
+
+                viewModel.deleteChecked()
+
+                true
+            }
+
+            else -> false
+        }
     }
 }

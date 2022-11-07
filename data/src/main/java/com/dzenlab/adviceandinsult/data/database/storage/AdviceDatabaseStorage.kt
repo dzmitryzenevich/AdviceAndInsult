@@ -1,7 +1,6 @@
 package com.dzenlab.adviceandinsult.data.database.storage
 
 import com.dzenlab.adviceandinsult.data.database.AppDatabase
-import com.dzenlab.adviceandinsult.data.database.entities.AdviceEntity
 import com.dzenlab.adviceandinsult.data.database.models.AdviceCreate
 import com.dzenlab.adviceandinsult.data.database.models.AdviceDelete
 import com.dzenlab.adviceandinsult.data.database.models.AdviceGet

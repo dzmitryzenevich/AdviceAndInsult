@@ -9,7 +9,6 @@
     app:cardCornerRadius="8dp"
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true"
-    android:clickable="true"
     android:focusable="true"
     android:checkable="true"
     app:layout_constraintTop_toTopOf="parent"
